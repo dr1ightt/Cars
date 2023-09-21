@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cars.Core.Domain.Enums
 {
-    public enum Model : byte
+    public enum Category : byte
     {
         Sedan = 1,
         Hetchback,
         Sport,
         MiniVan,
         PickUp,
-        Cupe
+        SuperCar
 
     }
 

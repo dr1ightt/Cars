@@ -10,7 +10,7 @@ namespace Cars.Core.Domain.Entites
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte Model { get; set; }
+        public byte Category { get; set; }
 
         public List<Car> Cars { get; set; }
     }
