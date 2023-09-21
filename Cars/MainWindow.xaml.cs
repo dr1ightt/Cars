@@ -23,6 +23,16 @@ namespace Cars
         public MainWindow()
         {
             InitializeComponent();
+            /*
+             *           
+             *    Car   Mark   Fuel    CarMark
+             *    Id     Id     Id     
+             *   Name   Name   Type
+             *   Price  Model 
+             *   CarId  MarkId 
+             *                           
+             */
+
         }
     }
 }
