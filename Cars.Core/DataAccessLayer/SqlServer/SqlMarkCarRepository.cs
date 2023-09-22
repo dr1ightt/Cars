@@ -49,7 +49,23 @@ namespace Cars.Core.DataAccessLayer.SqlServer
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = ""
+            const string query = @"select cm.Id, cm.CarId, c.Name CarName, c.Price, c.Category, cm.MarkId, c.Name MarkName
+            from MarkCars cm
+            join Cars c on c.Id = cm.CarId
+            join Marks m on m.Id = cm.MarkId
+            where cm.id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return Mapper.MapMarkCar(reader);
+            }
+            return null;
         }
 
         public List<MarkCar> Get()
@@ -57,14 +73,62 @@ namespace Cars.Core.DataAccessLayer.SqlServer
             throw new NotImplementedException();
         }
 
-        public MarkCar GetByCarId(int id)
+        public List<MarkCar> GetByCarId(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            const string query = @"select cm.Id, cm.CarId, c.Name CarName, c.Price, c.Category, cm.MarkId, b.Name MarkName
+            from MarkCars cm
+            join Cars c on c.Id = cm.CarId
+            join Marks m on m.Id = cm.MarkId
+            where c.id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<MarkCar> markCars = new List<MarkCar>();
+
+            while (reader.Read())
+            {
+                MarkCar cm = Mapper.MapMarkCar(reader);
+
+                markCars.Add(cm);
+            }
+
+            return markCars;
         }
 
-        public MarkCar GetByMarkId(int id)
+        public List<MarkCar> GetByMarkId(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            const string query = @"select cm.Id, cm.CarId, c.Name CarName, c.Price, c.Category, cm.MarkId, b.Name MarkName
+            from MarkCars cm
+            join Cars c on c.Id = cm.CarId
+            join Marks m on m.Id = cm.MarkId
+            where m.id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<MarkCar> markCars = new List<MarkCar>();
+
+            while (reader.Read())
+            {
+                MarkCar cm = Mapper.MapMarkCar(reader);
+
+                markCars.Add(cm);
+            }
+
+            return markCars;
         }
     }
 }

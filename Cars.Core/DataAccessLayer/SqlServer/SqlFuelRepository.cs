@@ -1,11 +1,6 @@
 ﻿using Cars.Core.Domain.Entites;
 using Cars.Core.Domain.Repositories;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cars.Core.DataAccessLayer.SqlServer
 {
@@ -40,7 +35,7 @@ namespace Cars.Core.DataAccessLayer.SqlServer
         }
         public void Update(Fuel fuel)
         {
-           using SqlConnection connection = new SqlConnection(_connectionString);
+            using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
             const string query = "Update fuel set type = @type where id = @id";
@@ -80,7 +75,7 @@ namespace Cars.Core.DataAccessLayer.SqlServer
             const string query = "select * from fuel";
 
             SqlCommand cmd = new SqlCommand(query, connection);
-            
+
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<Fuel> result = new List<Fuel>();

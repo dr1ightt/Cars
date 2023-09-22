@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars", "Cars\Cars.csproj", "{9738136C-19C0-4BF8-A70E-E83692A2D44C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Core", "Cars.Core\Cars.Core.csproj", "{14137FA7-80C6-4D5D-A2E8-73C69A074D13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Core", "Cars.Core\Cars.Core.csproj", "{14137FA7-80C6-4D5D-A2E8-73C69A074D13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,8 +12,8 @@ namespace Cars.Core.Domain.Repositories
         void Add(MarkCar markCar);
         void Delete(int id);
         MarkCar Get (int id);
-        MarkCar GetByMarkId(int id);
-        MarkCar GetByCarId(int id);
-        List<MarkCar> Get();
+        List<MarkCar> GetByCarId(int id);
+        List<MarkCar> GetByMarkId(int id);
+     
     }
 }

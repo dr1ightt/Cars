@@ -12,6 +12,7 @@ namespace Cars.Core.Domain.Entites
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; } 
+        public byte Category { get; set; }
          public List<Mark> Marks { get; set; }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cars.Core.Domain.Entites
+﻿namespace Cars.Core.Domain.Entites
 {
     public class Fuel
     {

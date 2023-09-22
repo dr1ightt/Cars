@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cars.Core.Domain.Enums
+﻿namespace Cars.Core.Domain.Enums
 {
     public enum Category : byte
     {
@@ -19,9 +13,9 @@ namespace Cars.Core.Domain.Enums
 
     public enum Type : byte
     {
-        Benzin = 1,
-        Dizel,
-        Hybride,
-        Gas
+        Benzin = 10,
+        Dizel = 20,
+        Hybride = 30,
+        Gas = 40
     }
 }
