@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WindowsStart" Height="250" Width="500">
     <Grid Background="WhiteSmoke">
-        <StackPanel Name="firstPanel" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <StackPanel Name="firstPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" >
             <TextBlock FontWeight="Black" Text="Connecting to server...." HorizontalAlignment="Center" FontSize="19"/>
             <ProgressBar Name="progressBar" IsIndeterminate="True"  Height="25" Margin="10,5,10,10" Background="Transparent"/>
         </StackPanel>

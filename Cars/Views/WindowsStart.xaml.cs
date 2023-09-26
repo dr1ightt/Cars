@@ -33,7 +33,7 @@ namespace Cars.Views
 
         public void CheckServer()
         {
-            Thread.Sleep(1000);
+            Task.Delay(10000);
         }
     }
 }
