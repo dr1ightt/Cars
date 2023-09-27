@@ -34,6 +34,18 @@ namespace Cars.Views
         public async void CheckServer()
         {
             await Task.Delay(3_000);
+
+            if(ApplicationContext.DB.IsOnline())
+            {
+                LoginWindow window = new LoginWindow();
+
+                window.Show();
+                this.Close();
+                return;
+            }
+
+            ConfigurationWindow configuration = new ConfigurationWindow();
         }
+        
     }
 }

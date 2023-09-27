@@ -10,5 +10,7 @@ namespace Cars.Core.Domain.Repositories
     {
         public IMarkCarRepository markCarRepository { get; }
         public IFuelRepository FuelRepository { get; }
+
+        bool IsOnline();
     }
 }

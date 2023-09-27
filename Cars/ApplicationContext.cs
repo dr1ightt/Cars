@@ -1,4 +1,5 @@
 ﻿using Cars.Core.Domain.Repositories;
+using Cars.Factories;
 using Cars.Settings;
 using Microsoft.Data.SqlClient;
 using System;
@@ -18,7 +19,7 @@ namespace Cars
         public static void Initialize()
         {
             Settings = InitializeSettings();
-
+            DB = DbFactories.Get(Settings);
         }
 
         private static AppSettings InitializeSettings()
