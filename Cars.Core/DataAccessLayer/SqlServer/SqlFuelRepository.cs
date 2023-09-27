@@ -1,12 +1,23 @@
 ﻿using Cars.Core.Domain.Entites;
 using Cars.Core.Domain.Repositories;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Cars.Core.DataAccessLayer.SqlServer
 {
     public class SqlFuelRepository : IFuelRepository
     {
         private readonly string _connectionString;
+        private string connectionString;
+
+        public SqlFuelRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
 
         public void Add(Fuel fuel)
         {

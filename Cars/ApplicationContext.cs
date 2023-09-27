@@ -1,4 +1,6 @@
-﻿using Cars.Settings;
+﻿using Cars.Core.Domain.Repositories;
+using Cars.Settings;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,11 +12,13 @@ namespace Cars
 {
     public static class ApplicationContext
     {
-        public static AppSettings Settings;
+        public static AppSettings Settings { get; private set; }
+        public static IUnitOfWork DB { get; private set; }
 
         public static void Initialize()
         {
-            InitializeSettings();
+            Settings = InitializeSettings();
+
         }
 
         private static AppSettings InitializeSettings()

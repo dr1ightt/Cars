@@ -31,9 +31,9 @@ namespace Cars.Views
 
         }
 
-        public void CheckServer()
+        public async void CheckServer()
         {
-            Task.Delay(10000);
+            await Task.Delay(3_000);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Cars.Core.Domain.Enums
 {
-    public enum DbType
+    public enum DataBaseType
     {
         SqlServer = 1,
         MySql = 2,
