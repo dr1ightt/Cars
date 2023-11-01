@@ -4,6 +4,6 @@
     {
         SqlServer = 1,
         MySql = 2,
-        InMemory
+        InMemory = 3
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cars.Core.Domain.Repositories
 {
-    public class ICarRepository
+    public interface ICarRepository
     {
         void Add(Car car);
         void Update(Car car);

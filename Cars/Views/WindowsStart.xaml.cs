@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cars.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace Cars.Views
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
+            ApplicationContext.Initialize();
             CheckServer();
 
         }
@@ -44,7 +46,11 @@ namespace Cars.Views
                 return;
             }
 
-            ConfigurationWindow configuration = new ConfigurationWindow();
+            ConfigurationWindow configurationWindow = new ConfigurationWindow();
+            configurationWindow.DataContext = new ConfigurationViewModel(configurationWindow);
+
+            configurationWindow.Show();
+            this.Close();
         }
         
     }

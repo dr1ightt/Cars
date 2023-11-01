@@ -15,7 +15,7 @@ namespace Cars
     {
         public App()
         {
-            ApplicationContext.Initialize();
+            
         }
     }
 }

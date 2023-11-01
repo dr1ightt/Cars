@@ -24,6 +24,10 @@ namespace Cars.Core.DataAccessLayer.SqlServer
 
         public IFuelRepository FuelRepository => new SqlFuelRepository(_connectionString);
 
+        public ICarRepository CarRepository => throw new NotImplementedException();
+
+        public IMarkRepository markRepository => throw new NotImplementedException();
+
         public bool IsOnline()
         {
             try

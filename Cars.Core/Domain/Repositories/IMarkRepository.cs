@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cars.Core.Domain.Repositories
 {
-    public class IMarkRepository
+    public interface IMarkRepository
     {
         void Add(Mark mark);
         void Update(Mark mark);

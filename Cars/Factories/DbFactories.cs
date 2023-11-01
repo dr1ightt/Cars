@@ -1,4 +1,5 @@
-﻿using Cars.Core.DataAccessLayer.SqlServer;
+﻿using Cars.Core.DataAccessLayer;
+using Cars.Core.DataAccessLayer.SqlServer;
 using Cars.Core.Domain.Repositories;
 using Cars.Settings;
 using Microsoft.Data.SqlClient;
@@ -21,8 +22,13 @@ namespace Cars.Factories
                     builder.InitialCatalog = appSettings.DbName;
                     builder.DataSource = appSettings.DbHost;
                     builder.IntegratedSecurity = appSettings.WindowsAuthentication;
+                    builder.TrustServerCertificate = true;
+
+                    if (appSettings.WindowsAuthentication == false)
+                    {
                     builder.UserID = appSettings.UserName;
                     builder.Password = appSettings.Password;
+                    }
 
                     string connectionstring = builder.ToString();
 
@@ -30,9 +36,9 @@ namespace Cars.Factories
                     break;
 
                 case Core.Domain.Enums.DataBaseType.MySql:
-                    return null;
+                    return new EmptyUnitOfWork();
                 case Core.Domain.Enums.DataBaseType.InMemory:
-                    return null;
+                    return new EmptyUnitOfWork();
                 default:
                     throw new NotSupportedException($"{appSettings.DbType} not supported");
             }
