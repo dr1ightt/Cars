@@ -4,34 +4,31 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Cars.Core.DataAccessLayer.SqlServer
 {
-    public class SqlMarkRepository : IMarkRepository
+    public class SqlCarRepository : ICarRepository
     {
         private readonly string _connectionString;
         private string connectionString;
 
-        public SqlMarkRepository(string connectionString)
+        public SqlCarRepository(string connectionString)
         {
-            this.connectionString = _connectionString;
+            this.connectionString = connectionString;
         }
 
-        
-        public void Add(Mark mark)
+        public void Add(Car car)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "Insert onto Mark(@Id)";
+            const string query = "Insert onto Car(@Id)";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("id", mark.Id);
-            cmd.Parameters.AddWithValue("name", mark.Name);
+            cmd.Parameters.AddWithValue("name", car.Id);
 
             cmd.ExecuteNonQuery();
         }
@@ -40,34 +37,37 @@ namespace Cars.Core.DataAccessLayer.SqlServer
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
 
-            const string query = "Delete from mark where id = @Id";
+            const string query = "Delete from car where id = @Id";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("id", id);
             cmd.ExecuteNonQuery();
         }
-        public void Update(Mark mark)
+
+
+        public void Update(Car car)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "Update mark set type = @type where id = @id";
+            const string query = "Update car set type = @type where id = @id";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("id", mark.Id);
-            cmd.Parameters.AddWithValue("name", mark.Name);
+            cmd.Parameters.AddWithValue("id", car.Id);
+            cmd.Parameters.AddWithValue("name", car.Name);
+            cmd.Parameters.AddWithValue("price", car.Price);
+            cmd.Parameters.AddWithValue("category", car.Category);
 
             cmd.ExecuteNonQuery();
         }
-
-        public Mark Get(int id)
+        public Car Get(int id)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "select * from mark where id = @Id";
+            const string query = "select * from car where id = @Id";
 
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("id", id);
@@ -75,33 +75,32 @@ namespace Cars.Core.DataAccessLayer.SqlServer
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                return Mapper.MapMark(reader);
+                return Mapper.MapCar(reader);
             }
 
             return null;
         }
 
-        public List<Mark> Get()
+        public List<Car> Get()
         {
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            const string query = "select * from mark";
+            const string query = "select * from car";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            List<Mark> result = new List<Mark>();
+            List<Car> result = new List<Car>();
 
             while (reader.Read())
             {
-                Mark mark = Mapper.MapMark(reader);
-                result.Add(mark);
+                Car car = Mapper.MapCar(reader);
+                result.Add(car);
             }
 
             return result;
         }
-
     }
 }
